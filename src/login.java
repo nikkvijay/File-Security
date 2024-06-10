@@ -2,16 +2,21 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class login extends JFrame implements ActionListener {
-    JLabel filesecurel, pinl;
+    JLabel filesecurel, pinl,emaill;
     JButton loginb, registrationb;
-    JTextField pintf;
+    JTextField pintf,emailtf;
+    JComboBox<String> cb1;
     static Pinmail otpMailer = registration.otpMailer; // Shared Pinmail instance
     static String registeredEmail; // Store the email of the registered user
 
@@ -29,25 +34,49 @@ public class login extends JFrame implements ActionListener {
         filesecurel.setForeground(Color.BLACK);
         filesecurel.setFont(f2);
         add(filesecurel);
+        
+        emaill = new JLabel("Email:");
+        emaill.setBounds(170, 130, 100, 45);
+        emaill.setForeground(Color.BLACK);
+        emaill.setFont(f3);
+        add(emaill);
+
+        emailtf = new JTextField();
+        emailtf.setBounds(220, 135, 170, 40);
+        emailtf.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent ke) {
+                char ch = ke.getKeyChar();
+                if (!((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9') || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_SPACE || ch == '@' || ch == '.')) {
+                    getToolkit().beep();
+                    ke.consume();
+                }
+            }
+        });
+        add(emailtf);
+
+        String s1[] = {"@gmail.com", "@yahoo.com", "@rediffmail.com", "@outlook.com", "@msn.co.in"};
+        cb1 = new JComboBox<String>(s1);
+        cb1.setBounds(390, 135, 100, 38);
+        add(cb1);
 
         pinl = new JLabel("PIN :");
-        pinl.setBounds(190, 150, 200, 45);
+        pinl.setBounds(170, 205, 200, 45);
         pinl.setForeground(Color.BLACK);
         pinl.setFont(f3);
         add(pinl);
 
         pintf = new JTextField();
-        pintf.setBounds(250, 155, 150, 40);
+        pintf.setBounds(220,210, 150, 40);
         add(pintf);
 
         loginb = new JButton("Login");
-        loginb.setBounds(130, 250, 150, 60);
+        loginb.setBounds(130, 300, 150, 60);
         loginb.setFont(f3);
         loginb.addActionListener(this);
         add(loginb);
 
         registrationb = new JButton("Registration");
-        registrationb.setBounds(350, 250, 150, 60);
+        registrationb.setBounds(350, 300, 150, 60);
         registrationb.setFont(f3);
         registrationb.addActionListener(this);
         add(registrationb);

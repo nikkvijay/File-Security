@@ -18,7 +18,7 @@ public class registration extends JFrame implements ActionListener {
     JLabel registrationl, emaill;
     JButton sendb;
     JComboBox<String> cb1;
-    JTextField emailf;
+    JTextField emailtf;
     static Pinmail otpMailer = new Pinmail(); // Shared Pinmail instance
 
     public registration() {
@@ -37,14 +37,14 @@ public class registration extends JFrame implements ActionListener {
         add(registrationl);
 
         emaill = new JLabel("Email:");
-        emaill.setBounds(130, 130, 100, 45);
+        emaill.setBounds(140, 130, 100, 45);
         emaill.setForeground(Color.BLACK);
         emaill.setFont(f3);
         add(emaill);
 
-        emailf = new JTextField();
-        emailf.setBounds(230, 135, 150, 40);
-        emailf.addKeyListener(new KeyAdapter() {
+        emailtf = new JTextField();
+        emailtf.setBounds(190, 135, 170, 40);
+        emailtf.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent ke) {
                 char ch = ke.getKeyChar();
                 if (!((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9') || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_SPACE || ch == '@' || ch == '.')) {
@@ -53,11 +53,11 @@ public class registration extends JFrame implements ActionListener {
                 }
             }
         });
-        add(emailf);
+        add(emailtf);
 
         String s1[] = {"@gmail.com", "@yahoo.com", "@rediffmail.com", "@outlook.com", "@msn.co.in"};
         cb1 = new JComboBox<String>(s1);
-        cb1.setBounds(410, 135, 100, 40);
+        cb1.setBounds(360, 135, 100, 39);
         add(cb1);
 
         sendb = new JButton("SEND");
@@ -79,7 +79,7 @@ public class registration extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == sendb) {
-            String email = emailf.getText() + cb1.getSelectedItem();
+            String email = emailtf.getText() + cb1.getSelectedItem();
             if (otpMailer.isEmailRegistered(email)) {
                 JOptionPane.showMessageDialog(this, "Email is already registered.");
             } else {

@@ -5,10 +5,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -17,6 +18,7 @@ public class unlock extends JFrame implements ActionListener {
     JLabel unlockl, filel, pinl;
     JButton unlockb, browseb;
     JTextField filetf, pintf;
+    JFrame unlock;
 
     public unlock() {
         Font f2 = new Font("Comic Sans", Font.BOLD, 45);
@@ -79,14 +81,14 @@ public class unlock extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == browseb) {
-            FileDialog fd = new FileDialog(this, "Choose a file", FileDialog.LOAD);
-            fd.setVisible(true);
-            String directory = fd.getDirectory();
-            String filename = fd.getFile();
-            if (directory != null && filename != null) {
-                String path = directory + filename;
-                filetf.setText(path);
+    	Object obj = e.getSource();
+    	if(obj==browseb){
+        	JFileChooser jfc = new JFileChooser(); 
+            int val = jfc.showOpenDialog(unlock);
+            if(val == 0)
+             {
+                File path = jfc.getSelectedFile();
+                filetf.setText(path.getAbsolutePath()); 
             }
         } else if (e.getSource() == unlockb) {
             String filePath = filetf.getText();
@@ -94,16 +96,6 @@ public class unlock extends JFrame implements ActionListener {
             
             System.out.println("Unlock button clicked with file: " + filePath + " and pin: " + pin);
             
-            try (FileInputStream fin = new FileInputStream(filePath)) {
-                int ch;
-                StringBuilder fileContent = new StringBuilder();
-                while ((ch = fin.read()) != -1) {
-                    fileContent.append((char) ch);
-                }
-                System.out.println("File content: " + fileContent.toString());
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
         }
     }
 
