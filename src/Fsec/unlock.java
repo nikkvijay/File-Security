@@ -1,3 +1,4 @@
+package Fsec;
 import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.Font;
@@ -22,7 +23,7 @@ public class unlock extends JFrame implements ActionListener {
 
     public unlock() {
         Font f2 = new Font("Comic Sans", Font.BOLD, 45);
-        Font f3 = new Font("Calibri", Font.PLAIN, 18);
+        Font f3 = new Font("Calibri", Font.BOLD, 18);
 
         setSize(650, 500);
         setTitle("Unlock");
@@ -31,7 +32,7 @@ public class unlock extends JFrame implements ActionListener {
         unlockl = new JLabel("UNLOCK");
         unlockl.setBounds(100, 40, 450, 45);
         unlockl.setHorizontalAlignment(JLabel.CENTER);
-        unlockl.setForeground(Color.BLACK);
+        unlockl.setForeground(new Color(0,144,160));
         unlockl.setFont(f2);
         add(unlockl);
 
@@ -47,6 +48,8 @@ public class unlock extends JFrame implements ActionListener {
         
         browseb = new JButton("Browse");
         browseb.setBounds(400, 135, 100, 39);
+        browseb.setBackground(new Color(0,144,160));
+        browseb.setForeground(Color.WHITE);
         browseb.setFont(f3);
         browseb.addActionListener(this);
         add(browseb);
@@ -72,6 +75,8 @@ public class unlock extends JFrame implements ActionListener {
         
         unlockb = new JButton("UNLOCK");
         unlockb.setBounds(250, 290, 150, 60);
+        unlockb.setBackground(new Color(0,144,160));
+        unlockb.setForeground(Color.WHITE);
         unlockb.setFont(f3);
         unlockb.addActionListener(this);
         add(unlockb);

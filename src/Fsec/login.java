@@ -1,3 +1,4 @@
+package Fsec;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+
 public class login extends JFrame implements ActionListener {
     JLabel filesecurel, pinl,emaill;
     JButton loginb, registrationb;
@@ -22,21 +24,21 @@ public class login extends JFrame implements ActionListener {
 
     public login() {
         Font f2 = new Font("Comic Sans", Font.BOLD, 45);
-        Font f3 = new Font("Calibri", Font.PLAIN, 18);
+        Font f3 = new Font("Segoe UI", Font.BOLD, 18);
 
         setSize(650, 450);
-        setTitle("File Secure");
+        setTitle("Login");
         setLayout(null);
 
         filesecurel = new JLabel("FILE SECURE");
         filesecurel.setBounds(100, 40, 450, 45);
-        filesecurel.setHorizontalAlignment(JLabel.CENTER);
-        filesecurel.setForeground(Color.BLACK);
+        filesecurel.setHorizontalAlignment(JLabel.CENTER); 
+        filesecurel.setForeground(new Color(0,144,160));
         filesecurel.setFont(f2);
         add(filesecurel);
         
         emaill = new JLabel("Email:");
-        emaill.setBounds(170, 130, 100, 45);
+        emaill.setBounds(160, 130, 100, 45);
         emaill.setForeground(Color.BLACK);
         emaill.setFont(f3);
         add(emaill);
@@ -59,7 +61,7 @@ public class login extends JFrame implements ActionListener {
         cb1.setBounds(390, 135, 100, 38);
         add(cb1);
 
-        pinl = new JLabel("PIN :");
+        pinl = new JLabel("Pin:");
         pinl.setBounds(170, 205, 200, 45);
         pinl.setForeground(Color.BLACK);
         pinl.setFont(f3);
@@ -69,14 +71,18 @@ public class login extends JFrame implements ActionListener {
         pintf.setBounds(220,210, 150, 40);
         add(pintf);
 
-        loginb = new JButton("Login");
+        loginb = new JButton("LOGIN");
         loginb.setBounds(130, 300, 150, 60);
+        loginb.setBackground(new Color(0,144,160));
+        loginb.setForeground(Color.WHITE);
         loginb.setFont(f3);
         loginb.addActionListener(this);
         add(loginb);
 
-        registrationb = new JButton("Registration");
-        registrationb.setBounds(350, 300, 150, 60);
+        registrationb = new JButton("REGISTRATION");
+        registrationb.setBounds(350, 300, 170, 60);
+        registrationb.setBackground(new Color(0,144,160));
+        registrationb.setForeground(Color.WHITE);
         registrationb.setFont(f3);
         registrationb.addActionListener(this);
         add(registrationb);

@@ -1,12 +1,15 @@
+package Fsec;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -16,10 +19,11 @@ public class lock extends JFrame implements ActionListener {
     JButton sendb,browseb;
     JComboBox<Object> cb1;
     JTextField filetf, emailtf;
+    JFrame lock;
 
     public lock() {
         Font f2 = new Font("Comic Sans", Font.BOLD, 45);
-        Font f3 = new Font("Calibri", Font.PLAIN, 18);
+        Font f3 = new Font("Segoe UI", Font.BOLD, 18);
 
         setSize(650, 500);
         setTitle("Lock");
@@ -28,7 +32,7 @@ public class lock extends JFrame implements ActionListener {
         lockl = new JLabel("LOCK");
         lockl.setBounds(100, 40, 450, 45);
         lockl.setHorizontalAlignment(JLabel.CENTER);
-        lockl.setForeground(Color.BLACK);
+        lockl.setForeground(new Color(0,144,160));
         lockl.setFont(f2);
         add(lockl);
 
@@ -44,6 +48,8 @@ public class lock extends JFrame implements ActionListener {
         
         browseb = new JButton("Browse");
         browseb.setBounds(400, 135, 100, 40);
+        browseb.setBackground(new Color(0,144,160));
+        browseb.setForeground(Color.WHITE);
         browseb.setFont(f3);
         browseb.addActionListener(this);
         add(browseb);
@@ -74,6 +80,8 @@ public class lock extends JFrame implements ActionListener {
 
         sendb = new JButton("SEND");
         sendb.setBounds(250, 290, 150, 60);
+        sendb.setBackground(new Color(0,144,160));
+        sendb.setForeground(Color.WHITE);
         sendb.setFont(f3);
         sendb.addActionListener(this);
         add(sendb);
@@ -83,11 +91,17 @@ public class lock extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == sendb) {
-        	SecureType lp = new SecureType();
-            dispose(); 
-        }
-    }
+    	Object obj = e.getSource();
+    	if(obj==browseb){
+        	JFileChooser jfc = new JFileChooser(); 
+            int val = jfc.showOpenDialog(lock);
+            if(val == 0)
+             {
+                File path = jfc.getSelectedFile();
+                filetf.setText(path.getAbsolutePath()); 
+                }
+            }
+    	}
 
     public static void main(String[] args) {
         new lock();

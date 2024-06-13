@@ -1,3 +1,5 @@
+package Fsec;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -23,21 +25,21 @@ public class registration extends JFrame implements ActionListener {
 
     public registration() {
         Font f2 = new Font("Comic Sans", Font.BOLD, 45);
-        Font f3 = new Font("Calibri", Font.PLAIN, 18);
+        Font f3 = new Font("Segoe UI", Font.BOLD, 18);
 
         setSize(650, 450);
-        setTitle("File Secure");
+        setTitle("Registration");
         setLayout(null);
 
         registrationl = new JLabel("REGISTRATION");
         registrationl.setBounds(100, 40, 450, 45);
         registrationl.setHorizontalAlignment(JLabel.CENTER);
-        registrationl.setForeground(Color.BLACK);
+        registrationl.setForeground(new Color(0,144,160));
         registrationl.setFont(f2);
         add(registrationl);
 
         emaill = new JLabel("Email:");
-        emaill.setBounds(140, 130, 100, 45);
+        emaill.setBounds(130, 130, 100, 45);
         emaill.setForeground(Color.BLACK);
         emaill.setFont(f3);
         add(emaill);
@@ -61,6 +63,8 @@ public class registration extends JFrame implements ActionListener {
         add(cb1);
 
         sendb = new JButton("SEND");
+        sendb.setBackground(new Color(0,144,160));
+        sendb.setForeground(Color.WHITE);
         sendb.setBounds(250, 250, 150, 60);
         sendb.setFont(f3);
         sendb.addActionListener(this);
@@ -76,7 +80,12 @@ public class registration extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    @Override
+    private Color Color(int i, int j, int k) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == sendb) {
             String email = emailtf.getText() + cb1.getSelectedItem();
