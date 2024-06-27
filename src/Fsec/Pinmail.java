@@ -7,8 +7,8 @@ import java.util.Properties;
 import java.util.Random;
 
 public class Pinmail {
-    private final String username = "projectsystem21@gmail.com";
-    private final String password = "ujhrlmnhbgbosgyk";
+    private final String username = "yourmail@gmail.com"; //your mail id
+    private final String password = "password"; //password
     private Map<String, String> otpStorage = new HashMap<String,String>();
 
     public void sendOTP(String to) throws MessagingException {
